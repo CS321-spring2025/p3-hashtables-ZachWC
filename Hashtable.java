@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * Manages Hash Table functionality
  * @author Zach Christensen
@@ -131,4 +134,16 @@ public abstract class Hashtable{
         return tableSize;
     }
         
+    public void dumpToFile(String fileName) {
+    try (PrintWriter out = new PrintWriter(fileName)) {
+        for (int i = 0; i < hashTable.length; i++) {
+            if (hashTable[i] != null && hashTable[i] != Hashtable.DEL) {
+                out.println("table[" + i + "]: " + hashTable[i].toString());
+            }
+        }
+    } catch (FileNotFoundException e) {
+        System.err.println("Error writing to file: " + fileName);
+        e.printStackTrace();
+    }
+}
 }
