@@ -6,6 +6,7 @@ public abstract class Hashtable{
 
     protected HashObject[] hashTable;
     protected int tableSize;
+    protected double loadFactor;
     protected int n; //number of inserted elements
     public static final HashObject DEL = new HashObject("DEL"); // delete flag
 
@@ -13,9 +14,10 @@ public abstract class Hashtable{
      * Creates a new Hashtable with tableSize
      * @param size
      */
-    public Hashtable(int size){
+    public Hashtable(int size, double loadFactor){
         n = 0; //no elements inserted
-        tableSize = size;
+        this.tableSize = size;
+        this.loadFactor = loadFactor;
         hashTable = new HashObject[tableSize];
     }
 
@@ -25,20 +27,28 @@ public abstract class Hashtable{
      * @param value
      * @return
      */
-    public boolean insert (int key, HashObject value){
-        int i = 0;
-        int hi = positiveMod(key, tableSize); //Initial hash index
+    public boolean insert (Object key, HashObject value){
+        if ((double) n / tableSize >= loadFactor) {
+            return false; // Load factor exceeded
+        }
+        int probe = 0;
+        int hi = hash(key, probe); //Initial hash index
 
-        while (i < hashTable.length && hashTable[hi] != null){
-            i = i +1;
-            hi = (key % tableSize + i) % tableSize;
+        while (probe < tableSize && hashTable[hi] != null){
+            if (hashTable[hi].equals(value)){
+                hashTable[hi].incrementFrequency();
+                return true;
+            }
+            probe++;
+            hi = hash(key, probe);
         }
 
-        if (i >= tableSize){
+        if (probe >= tableSize){
             return false; //Table is full
         }
 
         hashTable[hi] = value; //Insert object
+        value.setProbeCount(probe + 1);
         n++;
         return true;
 
@@ -49,20 +59,19 @@ public abstract class Hashtable{
      * @param key
      * @return
      */
-    public HashObject find(int key){
-        int i = 0;
-        int hi = positiveMod(key, tableSize);
+    public HashObject find(Object key){
+        int probe = 0;
+        int hi = hash(key, probe);
 
-        while (i < hashTable.length && hashTable[hi] != null && !hashTable[hi].getKey().equals(key)) {
-            i = i + 1;
-            hi = positiveMod(key + i, tableSize);
+        while (probe < tableSize && hashTable[hi] != null) {
+            if (hashTable[hi].getKey().equals(key)){
+                return hashTable[hi];
+            }
+            probe++;
+            hi = hash(key, probe);
         }
 
-        if (i >= hashTable.length || hashTable[hi] == null) {
-            return null;
-        }
-
-        return hashTable[hi];
+       return null;
 
     }
 
@@ -71,21 +80,19 @@ public abstract class Hashtable{
      * marks deleted spot with DEL
      * @param key
      */
-    public void delete(int key){
-        int i = 0;
-        int hi = positiveMod(key, tableSize);
+    public void delete(Object key){
+        int probe = 0;
+        int hi = hash(key, probe);
 
-        while (i < hashTable.length && hashTable[hi] != null && !hashTable[hi].getKey().equals(key)) {
-            i = i + 1;
-            hi = positiveMod(key + i, tableSize);
+        while (probe < tableSize && hashTable[hi] != null) {
+            if (hashTable[hi].getKey().equals(key)){
+                hashTable[hi] = DEL;
+                n--;
+                return;
+            }
+            probe++;
+            hi = hash(key,probe);
         }
-
-        if (i >= hashTable.length || hashTable[hi] == null) {
-            return;
-        }
-
-        hashTable[hi] = DEL;
-        n--;
     }
 
     /**
@@ -93,7 +100,7 @@ public abstract class Hashtable{
      * @param obj
      * @return
      */
-    protected abstract int hash(HashObject obj);
+    protected abstract int hash(Object key, int probe);
 
     /**
      * Helper method to handle negative hash codes

@@ -66,24 +66,4 @@ public class HashObject {
         return key + " " + frequency + " " + probeCount;
     }
 
-    //TODO REMOVE WHEN DONE
-    // public static void main(String[] args) {
-    //     // Create HashObject instances
-    //     HashObject obj1 = new HashObject("apple");
-    //     HashObject obj2 = new HashObject("apple");
-    //     HashObject obj3 = new HashObject("banana");
-    //     HashObject obj4 = obj1;  // obj4 is the same reference as obj1
-
-    //     // Test equality
-    //     System.out.println("obj1.equals(obj2): " + obj1.equals(obj2));  // Should be true (same key)
-    //     System.out.println("obj1.equals(obj3): " + obj1.equals(obj3));  // Should be false (different key)
-    //     System.out.println("obj1.equals(obj4): " + obj1.equals(obj4));  // Should be true (same reference)
-
-    //     // Test with a null object
-    //     System.out.println("obj1.equals(null): " + obj1.equals(null));  // Should be false (null is never equal to a HashObject)
-
-    //     // Test with an object of a different class
-    //     Object someOtherObject = new Object();
-    //     System.out.println("obj1.equals(someOtherObject): " + obj1.equals(someOtherObject));  // Should be false (different class)
-    // }
 }

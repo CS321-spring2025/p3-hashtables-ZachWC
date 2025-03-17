@@ -23,20 +23,6 @@ public class TwinPrimeGenerator {
             }
             // If no twin prime is found in the range, return -1 (or some indication)
             return -1;
-        }
-    
-        //TODO REMOVE WHEN DONE
-        // // Main method for testing
-        // public static void main(String[] args) {
-        //     int min = 95500;
-        //     int max = 96000;
-            
-        //     int twinPrime = generateTwinPrime(min, max);
-        //     if (twinPrime != -1) {
-        //         System.out.println("Twin prime found: " + twinPrime + " and " + (twinPrime - 2));
-        //     } else {
-        //         System.out.println("No twin prime found in the range.");
-        //     }
-        // }
+        }    
     
 }

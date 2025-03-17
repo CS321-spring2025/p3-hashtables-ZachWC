@@ -1,16 +1,14 @@
 public class DoubleHashing extends Hashtable {
 
-    public DoubleHashing(int size) {
-            super(size);
+    public DoubleHashing(int size, double loadFactor) {
+            super(size, loadFactor);
         }
     
     @Override
-    protected int hash(HashObject obj) {
-        return positiveMod(obj.getKey().hashCode(), tableSize);
-    }
-
-    private int secondHash(HashObject obj){
-        return 1 + positiveMod(obj.getKey().hashCode(), tableSize - 2);
+    protected int hash(Object key, int probe) { 
+        int hash1 = positiveMod(key.hashCode(), tableSize);
+        int hash2 = 1 + positiveMod(key.hashCode(), tableSize - 2);
+        return positiveMod(hash1 + probe * hash2, tableSize);
     }
     
 }
