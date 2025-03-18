@@ -1,3 +1,6 @@
+/**
+ * Implements double hashing hash function
+ */
 public class DoubleHashing extends Hashtable {
 
     public DoubleHashing(int size, double loadFactor) {

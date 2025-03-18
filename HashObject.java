@@ -1,47 +1,56 @@
+/**
+ * Creates and manages hash object
+ * @author Zach Christensen
+ */
 public class HashObject {
     private Object key;
     private int frequency;
     private int probeCount;
 
-    /*
-     * Creates HashObject 
-     */
+   /**
+    * Creates a hash object
+    * @param key
+    */
     public HashObject(Object key){
         this.key = key;
         this.frequency = 1; //inserting for the first time
         this.probeCount = 0;
     }
 
-    /*
-     * Returns key
+    /**
+     * Returns the key of a hash object
+     * @return
      */
     public Object getKey(){
         return key;
     }
 
-    /*
-     * Returns frequency
+    /**
+     * Returns frequencey
+     * @return
      */
     public int getFrequency(){
         return frequency;
     }
 
-    /*
+    /**
      * Increments frequency
      */
     public void incrementFrequency(){
         this.frequency++;
     }
 
-    /*
-     * Return probeCount
+    /**
+     * Returns probeCount
+     * @return
      */
     public int getProbeCount(){
         return probeCount;
     }
 
-    /*
-     * Sets probeCount
+    /**
+     * Sets probe count
+     * @param probe
      */
     public void setProbeCount(int probe){
         this.probeCount = probe;

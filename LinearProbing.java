@@ -1,3 +1,7 @@
+/**
+ * Implements linear probing hash function
+ * @author Zach Christensn
+ */
 public class LinearProbing extends Hashtable{
 
     public LinearProbing(int size, double loadFactor){

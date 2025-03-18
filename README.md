@@ -1,57 +1,72 @@
 # Project #: Project Name
 
-* Author: Your Name
-* Class: CS321 Section #
-* Semester: 
-
-**Note: Download this file and add to your repo as README.md. Don't cut and paste it as you won't get the formatting Markdown tags!**
+* Author: Zach Christensen
+* Class: CS321 Section #002
+* Semester: Spring 25
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally you should be pulling this
-right from the project specification. I don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+This project compares to open adressing techniques, Linear Probing and Double Hashing.
+It also implements tests to verify performance under different circumstances.
 
 ## Reflection
 
-Write a two paragraph reflection describing your experience with this 
-project.  Talk about what worked well and what was challenging.  
-Did you run into an issue that took some time to figure out?  
-Tell us about it. What did you enjoy, what was less desirable? Feel
-free to add other items (within the two paragraph limit).
+This project started out really hard for me. I went in to this project
+not having a very good grasp on how hash tables work, but the nature
+of this project forced me to become very comfortable with them.
+
+This project also helped refresh some old ideas that I learned in previous
+classes. Some ideas that it helped refresh were rules of inheritance and 
+how to write to a file. Once I got over the initial hump of this project
+I really enjoyed it.
 
 ## Compiling and Using
 
-This section should tell the user how to compile your code.  It is
-also appropriate to instruct the user how to use your code. Does your
-program require user input? If so, what does your user need to know
-about it to use it as quickly as possible?
+javac HashtableExperiment.java
+`java HashtableExperiment <dataSource> <loadFactor> [<debugLevel>]`
 
 ## Results 
 
-This section presents timing and other results of the experiments that 
-you were asked to perform as part of the project.
+## Data Source 1: Random Numbers
+
+| Load Factor | Linear Probing Avg. Probes | Double Hashing Avg. Probes |
+| ----------- | --------------------------- | --------------------------- |
+| 0.5         | 1.50                        | 1.39                        |
+| 0.6         | 1.75                        | 1.53                        |
+| 0.7         | 2.17                        | 1.73                        |
+| 0.8         | 2.98                        | 2.01                        |
+| 0.9         | 5.76                        | 2.57                        |
+| 0.95        | 10.23                       | 3.13                        |
+| 0.99        | 54.83                       | 4.63                        |
+
+## Data Source 2: Date Values
+
+| Load Factor | Linear Probing Avg. Probes | Double Hashing Avg. Probes |
+| ----------- | --------------------------- | --------------------------- |
+| 0.5         | 1.35                        | 1.58                        |
+| 0.6         | 1.43                        | 1.80                        |
+| 0.7         | 1.56                        | 2.07                        |
+| 0.8         | 1.75                        | 2.52                        |
+| 0.9         | 2.09                        | 3.28                        |
+| 0.95        | 2.32                        | 3.97                        |
+| 0.99        | 3.15                        | 5.61                        |
+
+## Data Source 3: Word List
+
+| Load Factor | Linear Probing Avg. Probes | Double Hashing Avg. Probes |
+| ----------- | --------------------------- | --------------------------- |
+| 0.5         | 0.12                        | 0.12                        |
+| 0.6         | 0.11                        | 0.11                        |
+| 0.7         | 0.11                        | 0.10                        |
+| 0.8         | 0.10                        | 0.10                        |
+| 0.9         | 0.10                        | 0.10                        |
+| 0.95        | 0.10                        | 0.10                        |
+| 0.99        | 0.10                        | 0.09                        |
 
 ## Sources used
 
-If you used any sources outside of the lecture notes, class lab files,
-or text book you need to list them here. If you looked something up on
-stackoverflow.com and fail to cite it in this section it will be
-considered plagiarism and be dealt with accordingly. So be safe CITE!
-
-Finally, remove these instructions from your README.md after you are finished!
+https://gemini.google.com/
+-used for markdown table formatting and twin prime algorithm
 
 ----------
 
-## Notes
-
-* This README.md template is using Markdown. Here is some help on using Markdown: 
-[markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
-
-* Markdown can be edited and viewed natively in most IDEs such as Eclipse and VS Code. Just toggle
-between the Markdown source and preview tabs.
-
-* To preview your README.md output online, you can copy your file contents to a Markdown editor/previewer
-such as [https://stackedit.io/editor](https://stackedit.io/editor).
